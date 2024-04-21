@@ -2,6 +2,8 @@ import { usePokemons } from '@/context/pokemonContext';
 import React, { useEffect } from 'react';
 import {
   BattleArena,
+  BattleContainer,
+  BattleLogContainer,
   ContainerGame,
   ContainerMain,
   ContainerMainPlayers,
@@ -11,6 +13,9 @@ import {
 import { PokemonCard } from '../PokemonCard';
 import { usePokemonBattleState } from '@/hooks/useSelectPokemonBattle';
 import { PokemonContextType } from '@/types/types';
+import { PokemonBattle } from '../PokemonBattle';
+import { usePokemonInBattle } from '@/hooks/usePokemonInBattle';
+import { useBattleLogic } from '@/hooks/useBattleLogic';
 
 export default function GamePage(props: PokemonContextType): JSX.Element {
   const {
@@ -20,6 +25,26 @@ export default function GamePage(props: PokemonContextType): JSX.Element {
     setPokemonsComputer,
   } = usePokemons();
   usePokemonBattleState();
+
+  const {
+    playerInBattle,
+    setPlayerInBattle,
+    computerInBattle,
+    setComputerInBattle,
+  } = usePokemonInBattle();
+
+  const { conductBattle, battleLog } = useBattleLogic({
+    setPlayerInBattle,
+    setComputerInBattle,
+  });
+
+  const handleBattleClick = () => {
+    if (playerInBattle.length > 0 && computerInBattle.length > 0) {
+      conductBattle(playerInBattle[0], computerInBattle[0]);
+    } else {
+      alert('Make sure both players have selected their pokemons!');
+    }
+  };
 
   console.log(pokemonsPlayer);
 
@@ -37,7 +62,6 @@ export default function GamePage(props: PokemonContextType): JSX.Element {
           </ContainerPlayers>
         </ContainerMainPlayers>
         <BattleArena>
-          {/* 
           <BattleContainer>
             <PokemonCard
               pokemons={playerInBattle}
@@ -55,7 +79,6 @@ export default function GamePage(props: PokemonContextType): JSX.Element {
               height='95%'
             />
           </BattleContainer>
-          
 
           <button onClick={handleBattleClick}>Start Battle!</button>
           <BattleLogContainer>
@@ -63,7 +86,6 @@ export default function GamePage(props: PokemonContextType): JSX.Element {
               <div key={index}>{log}</div>
             ))}
           </BattleLogContainer>
-          */}
         </BattleArena>
 
         <ContainerMainPlayers>
