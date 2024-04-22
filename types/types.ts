@@ -6,7 +6,7 @@ export interface Pokemon {
   name: string;
   image: string;
   hp: number;
-  maxHp?: number;
+  maxHp?: number | string;
   attack: number;
   defense: number;
   speed: number;
@@ -30,6 +30,11 @@ export interface PokemonProviderProps {
 export type PokemonListProps = {
   pokemons: Pokemon[];
   setPokemons: Dispatch<SetStateAction<Pokemon[]>>;
-  width?: number;
-  height?: number;
+  width?: number | string;
+  height?: number | string;
 };
+
+export type BattleReadyPokemonsFunc = (
+  pokemons: Pokemon[],
+  setInBattle: Dispatch<SetStateAction<Pokemon[]>>
+) => void;

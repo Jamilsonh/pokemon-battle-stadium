@@ -1,5 +1,4 @@
 import { usePokemons } from '@/context/pokemonContext';
-import React, { useEffect } from 'react';
 import {
   BattleArena,
   BattleContainer,
@@ -13,7 +12,6 @@ import {
 import { PokemonCard } from '../PokemonCard';
 import { usePokemonBattleState } from '@/hooks/useSelectPokemonBattle';
 import { PokemonContextType } from '@/types/types';
-import { PokemonBattle } from '../PokemonBattle';
 import { usePokemonInBattle } from '@/hooks/usePokemonInBattle';
 import { useBattleLogic } from '@/hooks/useBattleLogic';
 
