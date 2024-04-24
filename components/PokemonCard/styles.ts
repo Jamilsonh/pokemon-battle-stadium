@@ -7,7 +7,7 @@ interface PokemonCardProps {
 
 interface HpBarProps {
   hp: number;
-  maxHp: number;
+  maxHp?: any;
 }
 
 export const ContainerPlayers = styled.div`
@@ -53,23 +53,33 @@ export const PokemonCardContainer = styled.div<PokemonCardProps>`
   height: ${(props) => props.height || '45%'};
 `;
 
-export const PokemonCardHeader = styled.div`
-  display: flex;
-  background-color: green;
-  width: 100%;
-  font-size: 12px;
-  height: 10%;
-  justify-content: space-between;
-`;
-
-export const PokemonCardBody = styled.div`
-  height: 60%;
+export const PokemonImageContainer = styled.div`
+  height: 70%;
   background-color: white;
   display: flex;
+  flex-direction: column;
   align-items: center;
   width: 100%;
   justify-content: center;
+  border: 1px solid black;
+`;
 
+export const TitleContainer = styled.div`
+  display: flex;
+  height: 10%;
+  justify-content: space-between;
+  width: 90%;
+
+  p {
+    font-size: 12px;
+    background-color: gray;
+    border-radius: 1rem;
+    padding: 0.2rem;
+    color: white;
+  }
+`;
+
+export const ImageContainer = styled.div`
   img {
     width: 100%;
     height: auto;
@@ -78,7 +88,6 @@ export const PokemonCardBody = styled.div`
 
 export const PokemonCardFooter = styled.div`
   display: flex;
-
   width: 100%;
   font-size: 12px;
   justify-content: space-between;

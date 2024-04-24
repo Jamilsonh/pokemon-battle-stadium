@@ -1,14 +1,14 @@
 import { FC, useEffect, useState } from 'react';
 import {
-  ContainerPlayers,
   ContainerPokemons,
   HpBarContainer,
   HpCurrentBar,
   HpTotalBar,
-  PokemonCardBody,
+  ImageContainer,
   PokemonCardContainer,
   PokemonCardFooter,
-  PokemonCardHeader,
+  PokemonImageContainer,
+  TitleContainer,
 } from './styles';
 
 import { PokemonListProps } from '../../types/types';
@@ -66,15 +66,27 @@ export const PokemonCard: FC<PokemonListProps> = ({
           width={width ? `${width}%` : undefined}
           height={height ? `${height}%` : undefined}
         >
-          <PokemonCardHeader>
+          {/*
+            <PokemonCardHeader>
             <p>{pokemon.name}</p>
-            {/* <button onClick={() => updatePokemonHp(index, -10)}>-</button>
-            <button onClick={() => updatePokemonHp(index, 10)}>+</button>*/}
+            
           </PokemonCardHeader>
 
           <PokemonCardBody>
             <img src={pokemon.image} alt={pokemon.name} />
           </PokemonCardBody>
+          */}
+
+          <PokemonImageContainer>
+            <TitleContainer>
+              <p>{pokemon.name}</p>
+              <p>{pokemon.name}</p>
+            </TitleContainer>
+
+            <ImageContainer>
+              <img src={pokemon.image} alt={pokemon.name} />
+            </ImageContainer>
+          </PokemonImageContainer>
 
           <PokemonCardFooter>
             <p>ATK {pokemon.attack}</p>
