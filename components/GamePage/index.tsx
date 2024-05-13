@@ -64,8 +64,8 @@ export default function GamePage(props: PokemonContextType): JSX.Element {
             <PokemonCard
               pokemons={playerInBattle}
               setPokemons={setPlayerInBattle}
-              width='100%'
-              height='95%'
+              width={100}
+              height={90}
             />
 
             <div>VS</div>
@@ -73,8 +73,8 @@ export default function GamePage(props: PokemonContextType): JSX.Element {
             <PokemonCard
               pokemons={computerInBattle}
               setPokemons={setComputerInBattle}
-              width='100%'
-              height='95%'
+              width={100}
+              height={90}
             />
           </BattleContainer>
 

@@ -28,6 +28,8 @@ export const PokemonProvider = ({ children }: PokemonProviderProps) => {
           (stat: any) => stat.stat.name === 'hp'
         ).base_stat;
 
+        const types = data.types.map((typeObj: any) => typeObj.type.name);
+
         return {
           id: data.id,
           name: data.name,
@@ -40,6 +42,7 @@ export const PokemonProvider = ({ children }: PokemonProviderProps) => {
             .base_stat,
           speed: data.stats.find((stat: any) => stat.stat.name === 'speed')
             .base_stat,
+          types,
           isAlive: 'Sim',
           inBattle: false,
         };

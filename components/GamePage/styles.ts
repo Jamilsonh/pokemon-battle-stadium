@@ -104,7 +104,7 @@ export const BattleArena = styled.div`
 
 export const BattleContainer = styled.div`
   display: flex;
-  height: 45%;
+  height: 50%;
   justify-content: space-between;
   align-items: center;
   width: 100%;

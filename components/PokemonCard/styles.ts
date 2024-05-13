@@ -36,7 +36,7 @@ export const ContainerPokemons = styled.div`
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  height: 90%;
+  height: 100%;
 `;
 
 export const PokemonCardContainer = styled.div<PokemonCardProps>`
@@ -54,36 +54,51 @@ export const PokemonCardContainer = styled.div<PokemonCardProps>`
 `;
 
 export const PokemonImageContainer = styled.div`
-  height: 70%;
+  height: 60%;
   background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  justify-content: center;
+  justify-content: space-around;
   border: 1px solid black;
+  position: relative;
 `;
 
 export const TitleContainer = styled.div`
-  display: flex;
-  height: 10%;
-  justify-content: space-between;
-  width: 90%;
+  position: absolute;
+  bottom: 3%; // Ajuste para definir a posição do título sobre a imagem
+  left: 50%;
+  transform: translateX(-50%);
+  color: black;
+  text-transform: uppercase;
+  font-weight: 800;
+`;
 
-  p {
-    font-size: 12px;
-    background-color: gray;
-    border-radius: 1rem;
-    padding: 0.2rem;
-    color: white;
-  }
+export const PokemonType = styled.div`
+  position: absolute;
+  top: 5%;
+  left: 0%;
+  padding: 0 0.5rem;
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  //border: 1px solid white;
+  border-right: 1px solid white;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  border-radius: 0 1rem 1rem 0;
+  text-transform: uppercase;
+  font-size: 9px;
+  color: white;
+  font-weight: 800;
 `;
 
 export const ImageContainer = styled.div`
-  img {
-    width: 100%;
-    height: auto;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 `;
 
 export const PokemonCardFooter = styled.div`

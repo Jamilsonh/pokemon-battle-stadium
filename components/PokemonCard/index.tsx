@@ -8,6 +8,7 @@ import {
   PokemonCardContainer,
   PokemonCardFooter,
   PokemonImageContainer,
+  PokemonType,
   TitleContainer,
 } from './styles';
 
@@ -77,15 +78,17 @@ export const PokemonCard: FC<PokemonListProps> = ({
           </PokemonCardBody>
           */}
 
-          <PokemonImageContainer>
-            <TitleContainer>
-              <p>{pokemon.name}</p>
-              <p>{pokemon.name}</p>
-            </TitleContainer>
+          <PokemonImageContainer type={pokemon.types[0]}>
+            <PokemonType>
+              <p>{pokemon.types.join(', ')}</p>
+            </PokemonType>
 
             <ImageContainer>
               <img src={pokemon.image} alt={pokemon.name} />
             </ImageContainer>
+            <TitleContainer>
+              <p>{pokemon.name}</p>
+            </TitleContainer>
           </PokemonImageContainer>
 
           <PokemonCardFooter>
