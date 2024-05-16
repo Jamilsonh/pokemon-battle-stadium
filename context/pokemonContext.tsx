@@ -28,7 +28,9 @@ export const PokemonProvider = ({ children }: PokemonProviderProps) => {
           (stat: any) => stat.stat.name === 'hp'
         ).base_stat;
 
-        const types = data.types.map((typeObj: any) => typeObj.type.name);
+        const types = data.types.map((typeObj: any) => ({
+          name: typeObj.type.name,
+        }));
 
         return {
           id: data.id,

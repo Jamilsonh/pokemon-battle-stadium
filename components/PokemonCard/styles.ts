@@ -10,6 +10,23 @@ interface HpBarProps {
   maxHp?: any;
 }
 
+const typeColors = {
+  fire: '#EC4225',
+  water: '#4E9AFF',
+  electric: '#F5CC34',
+  grass: '#77CC55',
+  ice: '#66CCFF',
+  fighting: '#BB5545',
+  poison: '#AA5599',
+  ground: '#DDBB55',
+  flying: '#8899FF',
+  psychic: '#EE5499',
+  bug: '#AABB22',
+  rock: '#BBAA66',
+  ghost: '#6667BC',
+  dragon: '#7867EE',
+};
+
 export const ContainerPlayers = styled.div`
   background-color: rgb(204, 0, 0);
   display: flex;
@@ -79,11 +96,10 @@ export const PokemonType = styled.div`
   position: absolute;
   top: 5%;
   left: 0%;
-  padding: 0 0.5rem;
+  padding: 0.05rem 0.7rem;
   display: flex;
   justify-content: center;
-  background-color: black;
-  //border: 1px solid white;
+  background-color: ${({ type }) => typeColors[type] || 'black'};
   border-right: 1px solid white;
   border-top: 1px solid white;
   border-bottom: 1px solid white;
@@ -92,6 +108,18 @@ export const PokemonType = styled.div`
   font-size: 9px;
   color: white;
   font-weight: 800;
+  letter-spacing: 2px;
+  //box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,
+    1px 1px 0 black;
+`;
+
+export const PokemonSecondType = styled(PokemonType)`
+  top: 3%;
+`;
+
+export const PokemonThirdType = styled(PokemonType)`
+  top: 12%;
 `;
 
 export const ImageContainer = styled.div`

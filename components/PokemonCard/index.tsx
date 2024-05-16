@@ -8,11 +8,15 @@ import {
   PokemonCardContainer,
   PokemonCardFooter,
   PokemonImageContainer,
+  PokemonSecondType,
+  PokemonThirdType,
   PokemonType,
   TitleContainer,
 } from './styles';
 
 import { PokemonListProps } from '../../types/types';
+import Image from 'next/image';
+import Spd from '../../public/spd.webp';
 
 // Adapt the component to TypeScript
 export const PokemonCard: FC<PokemonListProps> = ({
@@ -78,10 +82,21 @@ export const PokemonCard: FC<PokemonListProps> = ({
           </PokemonCardBody>
           */}
 
-          <PokemonImageContainer type={pokemon.types[0]}>
-            <PokemonType>
-              <p>{pokemon.types.join(', ')}</p>
-            </PokemonType>
+          <PokemonImageContainer>
+            {pokemon.types.length === 1 ? (
+              <PokemonType type={pokemon.types[0].name}>
+                {pokemon.types[0].name}
+              </PokemonType>
+            ) : (
+              <>
+                <PokemonSecondType type={pokemon.types[0].name}>
+                  {pokemon.types[0].name}
+                </PokemonSecondType>
+                <PokemonThirdType type={pokemon.types[1].name}>
+                  {pokemon.types[1].name}
+                </PokemonThirdType>
+              </>
+            )}
 
             <ImageContainer>
               <img src={pokemon.image} alt={pokemon.name} />
@@ -94,6 +109,8 @@ export const PokemonCard: FC<PokemonListProps> = ({
           <PokemonCardFooter>
             <p>ATK {pokemon.attack}</p>
             <p>DEF {pokemon.defense}</p>
+            <Image src={Spd} width={20} height={20} />
+
             <p>SPD {pokemon.speed}</p>
           </PokemonCardFooter>
 
