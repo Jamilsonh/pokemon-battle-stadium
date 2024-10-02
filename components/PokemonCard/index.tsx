@@ -25,33 +25,6 @@ export const PokemonCard: FC<PokemonListProps> = ({
   width,
   height,
 }) => {
-  // Inicializando o estado com hp e maxHp para cada Pokémon
-  /*
-  const [pokemons2, setPokemons] = useState(
-    pokemons.map((pokemon) => ({
-      ...pokemon,
-      maxHp: pokemon.hp, // Inicializa maxHp com o valor de hp vindo das props
-    }))
-  );
-  */
-
-  /*const updatePokemonHp = (pokemonIndex, hpChange) => {
-    // Atualiza hp dentro dos limites de 0 e maxHp
-    setPokemons((pokemons) =>
-      pokemons.map((pokemon, index) => {
-        if (index === pokemonIndex) {
-          const newHp = Math.max(
-            0,
-            Math.min(pokemon.hp + hpChange, pokemon.maxHp)
-          );
-          return { ...pokemon, hp: newHp };
-        }
-        return pokemon;
-      })
-    );
-  };
-  */
-
   useEffect(() => {
     setPokemons(
       pokemons.map((pokemon) => ({
@@ -109,7 +82,7 @@ export const PokemonCard: FC<PokemonListProps> = ({
           <PokemonCardFooter>
             <p>ATK {pokemon.attack}</p>
             <p>DEF {pokemon.defense}</p>
-            <Image src={Spd} width={20} height={20} />
+            <Image src={Spd} width={20} height={20} alt='none' />
 
             <p>SPD {pokemon.speed}</p>
           </PokemonCardFooter>

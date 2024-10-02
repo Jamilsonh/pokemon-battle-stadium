@@ -1,5 +1,24 @@
 import { Dispatch, SetStateAction } from 'react';
 
+type PokemonType =
+  | 'Fire'
+  | 'Water'
+  | 'Grass'
+  | 'Electric'
+  | 'Ice'
+  | 'Fighting'
+  | 'Poison'
+  | 'Ground'
+  | 'Flying'
+  | 'Psychic'
+  | 'Bug'
+  | 'Rock'
+  | 'Ghost'
+  | 'Dragon'
+  | 'Dark'
+  | 'Steel'
+  | 'Fairy';
+
 // tipos.ts
 export interface Pokemon {
   id: number;
@@ -12,6 +31,7 @@ export interface Pokemon {
   speed: number;
   isAlive: string;
   inBattle: boolean;
+  types: { name: PokemonType }[];
 }
 
 export interface PokemonContextType {

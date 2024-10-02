@@ -10,7 +10,7 @@ interface HpBarProps {
   maxHp?: any;
 }
 
-const typeColors = {
+const typeColors: Record<string, string> = {
   fire: '#EC4225',
   water: '#4E9AFF',
   electric: '#F5CC34',
@@ -92,7 +92,7 @@ export const TitleContainer = styled.div`
   font-weight: 800;
 `;
 
-export const PokemonType = styled.div`
+export const PokemonType = styled.div<{ type: string }>`
   position: absolute;
   top: 5%;
   left: 0%;
