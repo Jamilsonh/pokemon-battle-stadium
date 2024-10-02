@@ -15,7 +15,7 @@ import { PokemonContextType } from '@/types/types';
 import { usePokemonInBattle } from '@/hooks/usePokemonInBattle';
 import { useBattleLogic } from '@/hooks/useBattleLogic';
 
-export default function GamePage(props: PokemonContextType): JSX.Element {
+export default function GamePage(): JSX.Element {
   const {
     pokemonsPlayer,
     pokemonsComputer,
