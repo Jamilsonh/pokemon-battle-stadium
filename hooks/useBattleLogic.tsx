@@ -1,15 +1,27 @@
 import { usePokemons } from '@/context/pokemonContext';
+import { Pokemon } from '@/types/types';
 import { useState } from 'react';
 
-export const useBattleLogic = ({ setPlayerInBattle, setComputerInBattle }) => {
-  const { setPokemonsPlayer, setPokemonsComputer } = usePokemons();
-  const [battleLog, setBattleLog] = useState([]);
+type SetPokemonState = React.Dispatch<React.SetStateAction<Pokemon[]>>;
 
-  function calcularPorcentagemDeReducao(defesa, ataque) {
+export const useBattleLogic = ({
+  setPlayerInBattle,
+  setComputerInBattle,
+}: {
+  setPlayerInBattle: SetPokemonState;
+  setComputerInBattle: SetPokemonState;
+}) => {
+  const { setPokemonsPlayer, setPokemonsComputer } = usePokemons();
+  const [battleLog, setBattleLog] = useState<string[]>([]);
+
+  function calcularPorcentagemDeReducao(defesa: number, ataque: number) {
     return (defesa / ataque) * 100;
   }
 
-  function calcularDano(atacante, defensor) {
+  function calcularDano(
+    atacante: { ATK: number },
+    defensor: { DEF: number; HP: number }
+  ) {
     const ataqueBase = atacante.ATK;
     const dobroDoAtaque = atacante.ATK * 2;
     let reducaoDeDanoPercentual;
@@ -46,9 +58,12 @@ export const useBattleLogic = ({ setPlayerInBattle, setComputerInBattle }) => {
     return danoFinal;
   }
 
-  const delay = (ms) => new Promise((res) => setTimeout(res, ms));
+  const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
-  const conductBattle = async (playerPokemon, computerPokemon) => {
+  const conductBattle = async (
+    playerPokemon: Pokemon,
+    computerPokemon: Pokemon
+  ) => {
     let player = { ...playerPokemon };
     let computer = { ...computerPokemon };
 
@@ -95,7 +110,11 @@ export const useBattleLogic = ({ setPlayerInBattle, setComputerInBattle }) => {
     replaceFaintedPokemon(computer, setPokemonsComputer, setComputerInBattle);
   };
 
-  const replaceFaintedPokemon = async (pokemon, setPokemons, setInBattle) => {
+  const replaceFaintedPokemon = async (
+    pokemon: Pokemon,
+    setPokemons: SetPokemonState,
+    setInBattle: SetPokemonState
+  ) => {
     if (pokemon.hp <= 0) {
       // Atualizar o Pokémon que morreu
       await setPokemons((prev) =>
